@@ -5,9 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "env2": "^2.2.2",
-    "pg": "^7.7.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "joi": "^14.3.0",
+    "pg": "^7.7.1",
     "supertest": "^3.3.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
