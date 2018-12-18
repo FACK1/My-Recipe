@@ -6,6 +6,7 @@ const queries = require('./queries/get.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
 app.set('views', path.join(__dirname, 'views'));// 2
 app.set('view engine', 'hbs');// 3
 // 4.
