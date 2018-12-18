@@ -11,6 +11,8 @@
 # Architecture :
 - App Architecture 
 - file Structure 
+
+```
   - public 
       |__ dom.js
       |__style.css
@@ -36,7 +38,7 @@
               |_db_test.js
               |_test.js
 - .gitignore
-  
+  ```
  
 # How to run our site on your machine?
 - git clone this repo **(https://github.com/FACK1/My-Recipe.git)**
