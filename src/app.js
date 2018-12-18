@@ -22,20 +22,26 @@ app.engine(
 
 app.get('/', (req, res) => {
   queries.getRecipes()
-    .then(recipeArray =>{
-      const data ={
+    .then((recipeArray) => {
+      const data = {
         title: 'Recipes',
         recipes: recipeArray,
-      }
-      res.render('home',data)
+      };
+      res.render('home', data);
     });
 });
 
 
 app.post('/recipe/add', (req, res) => {
-   const {name,recipe,img_url,type}= req.body;
-  const recipeObj = { name, recipe, img_url, type };
-  setData.addRecipe(recipeObj, (err, id) => {
+  /* eslint-disable */
+  const {
+    name, recipe, img_url, type,
+  } = req.body;
+  /* eslint-enable */
+  const recipeObj = {
+    name, recipe, img_url, type,
+  };
+  setData.addRecipe(recipeObj, (err) => {
     if (err) {
       console.log('SET DATA ERROR : ', err);
     } else {
