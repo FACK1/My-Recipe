@@ -1,8 +1,8 @@
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');// 1
-//const recipesData = require('../data.json');
 const setData = require('./queries/set');
+const queries = require('./queries/get.js');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -19,11 +19,16 @@ app.engine(
     defaultLayout: 'main',
   }),
 );
+
 app.get('/', (req, res) => {
-  res.render('home', {
-    title: 'Recipes',
-    recipes: [{ name: 'name1', image_url: 'hhh', recipe: 'resipe1' }],
-  });
+  queries.getRecipes()
+    .then(recipeArray =>{
+      const data ={
+        title: 'Recipes',
+        recipes: recipeArray,
+      }
+      res.render('home',data)
+    });
 });
 
 
@@ -38,6 +43,5 @@ app.post('/recipe/add', (req, res) => {
     }
   });
 });
-
 
 module.exports = app;
