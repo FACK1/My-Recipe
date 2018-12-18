@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');// 1
-const recipesData = require('../data.json');
+const queries = require('./queries/get.js');
 
 const app = express();
 
@@ -17,10 +17,18 @@ app.engine(
     defaultLayout: 'main',
   }),
 );
+
 app.get('/', (req, res) => {
-  res.render('home', {
-    title: 'Recipes',
-    recipes: recipesData,
-  });
+  queries.getRecipes()
+  .then(recipeArray =>{
+    const data ={
+      title: 'Recipes',
+      recipes: recipeArray,
+
+    }
+    res.render('home',data)
+  })
+
 });
+
 module.exports = app;
