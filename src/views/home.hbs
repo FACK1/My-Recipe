@@ -1,0 +1,13 @@
+<header>
+  <h1 class="">{{title}}</h1>
+</header>
+<ul>
+  {{#each recipes}}
+  <li>Name : {{name}}</li>
+  <li style="white-space: pre-line">Reccipe : {{recipe}}</li>
+  <li>Image :
+    <img width="200px" height="200px" src={{image_url}} alt=""> </li>
+  <br>
+  {{/each}}
+</ul>
+<a href="./recipe">Recipe</a>
