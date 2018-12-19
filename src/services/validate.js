@@ -1,9 +1,9 @@
 const joi = require('joi');
 
-const  validate = (validateCheck) => (req, res, next) => {
+const validate = validateCheck => (req, res, next) => {
   const validationResult = joi.validate(req.body, validateCheck, { abortEarly: false });
 
-  if(validationResult.error) {
+  if (validationResult.error) {
     res.status(200).json({ err: validationResult.error.details.map(error => error.message) });
   } else {
     next();
@@ -11,4 +11,3 @@ const  validate = (validateCheck) => (req, res, next) => {
 };
 
 module.exports = validate;
-
