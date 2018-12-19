@@ -1,15 +1,12 @@
 const dbConnection = require('../database/db_connection.js');
 
 
-const getRecipes = () =>{
-  return dbConnection.query(`SELECT * FROM recipes;`)
+const getRecipes = () => dbConnection.query('SELECT * FROM recipes;')
   .then(res => res.rows)
-  .catch(err => {
-    console.log({err});
-  })
-}
+  .catch((err) => {
+    console.log({ err });
+  });
 
-module.exports=
-{
+module.exports = {
   getRecipes,
-}
+};
