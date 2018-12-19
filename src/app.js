@@ -5,11 +5,14 @@ const setData = require('./queries/set');
 const getData = require('./queries/get.js');
 const validate = require('./services/validate');
 const valdations = require('./services/validations');
+const helpers = require("./views/helpers/helper")
+
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
 app.set('views', path.join(__dirname, 'views'));// 2
 app.set('view engine', 'hbs');// 3
 // 4.
@@ -19,6 +22,7 @@ app.engine(
     extname: 'hbs',
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
+    helpers
   }),
 );
 
@@ -70,6 +74,7 @@ app.get('/recipe/:recipe_id', (req, res, next) => {
 });
 
 app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
+  console.log(error);
   res.status(500).render('serverError', { error });
 });
 
