@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "nodemon src/server.js -e js,hbs",
     "test": "tape src/test/test.js | tap-spec",
-    "dbtest":"tape src/test/db_test.js | tap-spec",
+    "start": "node src/server.js",
     "eslint": "./node_modules/.bin/eslint src/",
     "eslint:fix": "./node_modules/.bin/eslint --fix src/"
   },
