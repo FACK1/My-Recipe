@@ -3,6 +3,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');// 1
 const setData = require('./queries/set');
 const queries = require('./queries/get.js');
+const validate = require('./services/validate');
+const valdations = require('./services/validations');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +34,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/recipe/add', (req, res) => {
+app.post('/recipe/add', validate(valdations.addRecipeValidation) ,(req, res) => {
   /* eslint-disable */
   const {
     name, recipe, img_url, type,
