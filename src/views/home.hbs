@@ -1,19 +1,31 @@
-<!-- <header>
-  <h1 class="">{{title}}</h1>
-</header>
-<ul>
-  {{#each recipes}}
-  <li>Name : {{name}}</li>
-  <li style="white-space: pre-line">Reccipe : {{recipe}}</li>
-  <li>Image :
-    <img width="200px" height="200px" src={{img_url}}> </li>
-  <br>
-  {{/each}}
-</ul>
-<a href="./recipe">Recipe</a> -->
-
     <div class="header">
-      <h1>My Recipes</h1>
+      <h1>{{title}}</h1>
       <button type="button" name="button" class="app_drawer__button" id="movebutton"> <i class="fas fa-plus-circle"></i></button>
-      <div class="adddiv"></div>
+      <div class="app_drawer" id="adddiv">
+        <form class="formadd" action="/recipe/add" method="post">
+          <label for="name">Name:</label> <input type="text" name="name" value="" placeholder="Recipe Name" required> <br>
+          <label for="type">Type:</label>
+          <select name="type" required>
+              <option value="true">Vegetarian</option>
+              <option value="false">Non Vegetarian</option>
+          </select> <br>
+          <label for="recipe">Recipe Steps:</label> <textarea name="recipe" rows="6" cols="33" placeholder="Recipe Steps" required></textarea> <br>
+          <label for="img_url" id="imglabel">Image</label> <input type="file" name="img_url" value="" required> <br>
+          <input type="submit" name="submit" value="Add Recipe" id="addbtn"> <br>
+        </form>
+      </div>
+      <hr>
+
+      <div class="recipes">
+        <ul>
+          {{#each recipes}}
+          <div class="recipe">
+            <li> <a href={{getLink id}}>  {{name}} </a></li>
+            <li><img width="100px" height=100px" src={{img_url}}> </li>
+            <br>
+          </div>
+          {{/each}}
+        </ul>
+
+      </div>
     </div>

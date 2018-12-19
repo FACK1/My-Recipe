@@ -3,6 +3,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');// 1
 const setData = require('./queries/set');
 const queries = require('./queries/get.js');
+const helpers = require("./views/helpers/helper")
+
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -18,6 +20,7 @@ app.engine(
     extname: 'hbs',
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
+    helpers
   }),
 );
 
