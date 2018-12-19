@@ -2,16 +2,27 @@ const test = require('tape');
 const request = require('supertest');
 const app = require('../app');
 
-test('Tape Test',t => {
+test('1. Tape Test',t => {
   t.equal(1,1,"Should Be Equal!")
   t.end();
 })
 
-test('All routes should return the expected results', t => {
+test('2. All routes should return the expected results', t => {
   request(app)
     .get('/')
     .expect(200)
-    .expect(['Content-Type'],'text/html; charset=utf-8')
+    .expect(['Content-Type'],'text/html; charset=utf-8','Done !')
+    .end((err, res) => {
+      t.error(err);
+      t.end();
+    });
+});
+
+test('3. This routes should return the expected recipes Html', t => {
+  request(app)
+    .get('/recipe/1')
+    .expect(200)
+    .expect(['Content-Type'],'text/html; charset=utf-8',"The Result should Be HTML ")
     .end((err, res) => {
       t.error(err);
       t.end();
