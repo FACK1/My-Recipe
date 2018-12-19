@@ -1,8 +1,23 @@
-<img src="{{recipe.img_url}}"><br>
-<li>{{recipe.name}}</li><br>
-{{#if recipe.type}}
-<li>For Vegiterian</li>
-{{else}}
-<li>NOT for vegiterian</li>
-{{/if}}
-<li>{{recipe.recipe}}</li>
+<link href="/cssResets.css" rel="stylesheet" type="text/css">
+<link href="/recipeStyle.css" rel="stylesheet" type="text/css">   
+
+
+<div id="container">
+
+    <h1>{{recipe.name}}</h1><br>
+
+    <div id="content">
+
+        <img id="recipeImage" src="{{recipe.img_url}}">
+
+        <div id="description">
+            {{#if recipe.type}}
+            <h3>For Vegiterian</h3>
+            {{else}}
+            <h3>NOT for vegiterian</h3>
+            {{/if}} <br>
+            <p><xmp>{{recipe.recipe}}</xmp></p>
+        </div>
+    </div>
+</div>
+
