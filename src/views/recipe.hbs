@@ -1,13 +1,8 @@
-<header>
-  <h1 class="">{{title}}</h1>
-</header>
-<ul>
-  {{#each recipes}}
-  <li>Name : {{name}}</li>
-  <li style="white-space: pre-line">Reccipe : {{recipe}}</li>
-  <li>Image :
-    <img width="200px" height="200px" src={{img_url}}> </li>
-  <br>
-  {{/each}}
-</ul>
-<a href="./recipe">Recipe</a>
+<img src="{{recipe.img_url}}"><br>
+<li>{{recipe.name}}</li><br>
+{{#if recipe.type}}
+<li>For Vegiterian</li>
+{{else}}
+<li>NOT for vegiterian</li>
+{{/if}}
+<li>{{recipe.recipe}}</li>

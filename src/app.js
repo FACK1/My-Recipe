@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');// 1
 const setData = require('./queries/set');
-const queries = require('./queries/get.js');
+const getData = require('./queries/get.js');
+const validate = require('./services/validate');
+const valdations = require('./services/validations');
 const helpers = require("./views/helpers/helper")
 
 
@@ -24,19 +26,22 @@ app.engine(
   }),
 );
 
-app.get('/', (req, res) => {
-  queries.getRecipes()
+app.get('/', (req, res, next) => {
+  getData.getRecipes()
     .then((recipeArray) => {
       const data = {
         title: 'Recipes',
         recipes: recipeArray,
       };
       res.render('home', data);
+    })
+    .catch((getDataError) => {
+      next(getDataError);
     });
 });
 
 
-app.post('/recipe/add', (req, res) => {
+app.post('/recipe/add', validate(valdations.addRecipeValidation), (req, res, next) => {
   /* eslint-disable */
   const {
     name, recipe, img_url, type,
@@ -47,11 +52,30 @@ app.post('/recipe/add', (req, res) => {
   };
   setData.addRecipe(recipeObj, (err) => {
     if (err) {
-      console.log('SET DATA ERROR : ', err);
+      next(err);
     } else {
       res.redirect('/');
     }
   });
+});
+
+app.get('/recipe/:recipe_id', (req, res, next) => {
+  getData.getRecipeById(req.params.recipe_id, (getError, recipeDetails) => {
+    if (getError) {
+      next(getError);
+    } else {
+      const data = {
+        title: 'Recipe',
+        recipe: recipeDetails,
+      };
+      res.render('recipe', data);
+    }
+  });
+});
+
+app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
+  console.log(error);
+  res.status(500).render('serverError', { error });
 });
 
 module.exports = app;
