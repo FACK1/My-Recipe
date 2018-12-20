@@ -18,11 +18,22 @@ h1{
   font-family: 'Merriweather', serif;
 
 }
+select{
+  font-size: 12pt;
+  margin-left: 14px;
+  width: 32%;
+  padding: 7px;
+  border-radius: 5px;
 
+}
+option{
+  font-size: 10pt;
+}
 
 #addbtn{
-  margin-left: 33%;
+  margin-left: 38%;
   color: #9F534E;
+  font-size: 18pt;
 
 }
 
@@ -31,7 +42,7 @@ h1{
 .formadd input{
   margin: 7px;
   border-radius: 5px;
-  padding: 2px;
+  padding: 7px;
   color: #9f534e;
 }
 .formadd textarea{
@@ -43,6 +54,8 @@ h1{
 .formadd label{
   margin: 7px;
   color: #E4E8E8;
+  font-weight: bold;
+  font-size: 14pt;
 
 }
 
@@ -129,4 +142,9 @@ ul{
 li a{
 text-decoration: none;
 color: #9F534E;
+}
+
+.steps{
+  float: right;
+  margin-top: -20%;
 }
