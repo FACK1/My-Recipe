@@ -10,7 +10,7 @@ const homeRouter = (req, res, next) => {
       res.render('home', data);
     })
     .catch((getDataError) => {
-      next(getDataError);
+      next('500');
     });
 };
 

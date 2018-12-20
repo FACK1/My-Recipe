@@ -4,13 +4,17 @@ const setData = require('../queries/set');
 const getRecipeRouter = (req, res, next) => {
   getData.getRecipeById(req.params.recipe_id, (getError, recipeDetails) => {
     if (getError) {
-      next(getError);
+      next('500');
     } else {
-      const data = {
-        title: 'Recipe',
-        recipe: recipeDetails,
-      };
-      res.render('recipe', data);
+      try {
+        const data = {
+          title: 'Recipe',
+          recipe: recipeDetails,
+        };
+        res.render('recipe', data);
+      } catch (e) {
+        next('500');
+      }
     }
   });
 };
@@ -24,7 +28,7 @@ const addRecipe = (req, res, next) => {
   };
   setData.addRecipe(recipeObj, (err) => {
     if (err) {
-      next(err);
+      next('500');
     } else {
       res.redirect('/');
     }

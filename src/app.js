@@ -33,8 +33,18 @@ app.post('/recipe/add', validate(valdations.addRecipeValidation), recipeControll
 
 app.get('/recipe/:recipe_id', recipeController.getRecipeRouter);
 
+app.get('*', (req, res, next) => {
+  next('404');
+});
+
 app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
-  res.status(500).render('serverError', { error });
+  switch (error) {
+    case '404':
+      res.status(404).render('serverError');
+      break;
+    case '500':
+      res.status(500).render('serverError');
+  }
 });
 
 module.exports = app;
