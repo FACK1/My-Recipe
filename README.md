@@ -57,6 +57,11 @@ An App Allow user to see all recipes and can create his own recipe.
 - git clone this repo **(https://github.com/FACK1/My-Recipe.git)**
 - Open your **command line**.
 - Put in terminal : **npm install** .
+- create database **CREATE DATABASE <database name here>; **
+- create uesrname and password **CREATE USER <username> with password <password>;**
+- grant prinileges **GRANT ALL PRIVILEGES ON DATABASE <database name here> TO <desired username entered previously>;**
+- make config.env file and put **DATABASE_URL= postgres://user:password@localhost:5432/dbname**
+- Put in terminal : **node database/db_build.js**.
 - Then put in terminal : **npm run dev** to run the server.
 - Open your browser and put in terminal: **localhost:3000**.
 
