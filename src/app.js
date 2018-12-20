@@ -42,13 +42,11 @@ app.get('/', (req, res, next) => {
 
 
 app.post('/recipe/add', validate(valdations.addRecipeValidation), (req, res, next) => {
-  /* eslint-disable */
   const {
-    name, recipe, img_url, type,
+    name, recipe, imgUrl, type,
   } = req.body;
-  /* eslint-enable */
   const recipeObj = {
-    name, recipe, img_url, type,
+    name, recipe, imgUrl, type,
   };
   setData.addRecipe(recipeObj, (err) => {
     if (err) {
