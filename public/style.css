@@ -1,22 +1,37 @@
+
 .header{
   background-image: url(bg2.jpeg);
   width: 100%;
   height: -webkit-fill-available;
   background-size: cover;
   background-repeat: no-repeat;
+  top: 0  !important;
+  left: 0 !important;
+
 }
 h1{
   color: #9F534E;
   text-align: center;
-  font-size: 30pt;
-  font-family: 'Charm', cursive;
+  font-size: 40pt;
+  font-family: 'Merriweather', serif;
 
 }
+select{
+  font-size: 12pt;
+  margin-left: 14px;
+  width: 32%;
+  padding: 7px;
+  border-radius: 5px;
 
+}
+option{
+  font-size: 10pt;
+}
 
 #addbtn{
-  margin-left: 33%;
+  margin-left: 38%;
   color: #9F534E;
+  font-size: 18pt;
 
 }
 
@@ -25,7 +40,7 @@ h1{
 .formadd input{
   margin: 7px;
   border-radius: 5px;
-  padding: 2px;
+  padding: 7px;
   color: #9f534e;
 }
 .formadd textarea{
@@ -37,6 +52,8 @@ h1{
 .formadd label{
   margin: 7px;
   color: #E4E8E8;
+  font-weight: bold;
+  font-size: 14pt;
 
 }
 
@@ -66,7 +83,7 @@ h1{
 .app_drawer__button {
     position: absolute;
     z-index: 15;
-    top: 5%;
+    top: 8%;
     left: 2em;
     border-radius: 50%;
     border: 12px solid #9F534E;
@@ -104,9 +121,12 @@ ul{
   text-align: center;
   background-color: #e5e8e7;
   border-color : #9F534E;
-  font-family: 'Charm', cursive;
+  font-family: 'Merriweather', serif;
   color: #9F534E;
   font-weight: bold;
+  width: 130px;
+  height: 180px;
+
 }
 
 .recipe img{
@@ -120,4 +140,9 @@ ul{
 li a{
 text-decoration: none;
 color: #9F534E;
+}
+
+.steps{
+  float: right;
+  margin-top: -20%;
 }

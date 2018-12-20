@@ -10,8 +10,10 @@
               <option value="true">Vegetarian</option>
               <option value="false">Non Vegetarian</option>
           </select> <br>
-          <label for="recipe">Recipe Steps:</label> <textarea name="recipe" rows="6" cols="33" placeholder="Recipe Steps" required></textarea> <br>
           <label for="img_url">Image</label> <input type="text" name="imgUrl" value="" required> <br>
+          <div class="steps">
+            <label for="recipe">Recipe Steps:</label> <br> <textarea name="recipe" rows="6" cols="33" placeholder="Recipe Steps" required></textarea> <br>
+          </div>
           <input type="submit"  value="Add Recipe" id="addbtn"> <br>
         </form>
       </div>
@@ -22,7 +24,7 @@
           {{#each recipes}}
           <div class="recipe">
             <li> <a href={{getLink id}}>  {{name}} </a></li>
-            <li><img width="100px" height=100px" src={{img_url}}> </li>
+            <li><img width="120px" height="120px" src={{img_url}}> </li>
             <br>
           </div>
           {{/each}}
