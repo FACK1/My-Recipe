@@ -1,11 +1,11 @@
 const path = require('path');
 const express = require('express');
-const exphbs = require('express-handlebars');// 1
-const setData = require('./queries/set');
-const getData = require('./queries/get.js');
+const exphbs = require('express-handlebars');
 const validate = require('./services/validate');
 const valdations = require('./services/validations');
 const helpers = require('./views/helpers/helper');
+const homeController = require('./controllers/homeController');
+const recipeController = require('./controllers/recipeController');
 
 
 const app = express();
@@ -26,50 +26,12 @@ app.engine(
   }),
 );
 
-app.get('/', (req, res, next) => {
-  getData.getRecipes()
-    .then((recipeArray) => {
-      const data = {
-        title: 'Recipes',
-        recipes: recipeArray,
-      };
-      res.render('home', data);
-    })
-    .catch((getDataError) => {
-      next(getDataError);
-    });
-});
+app.get('/', homeController.homeRouter);
 
 
-app.post('/recipe/add', validate(valdations.addRecipeValidation), (req, res, next) => {
-  const {
-    name, recipe, imgUrl, type,
-  } = req.body;
-  const recipeObj = {
-    name, recipe, imgUrl, type,
-  };
-  setData.addRecipe(recipeObj, (err) => {
-    if (err) {
-      next(err);
-    } else {
-      res.redirect('/');
-    }
-  });
-});
+app.post('/recipe/add', validate(valdations.addRecipeValidation), recipeController.addRecipe);
 
-app.get('/recipe/:recipe_id', (req, res, next) => {
-  getData.getRecipeById(req.params.recipe_id, (getError, recipeDetails) => {
-    if (getError) {
-      next(getError);
-    } else {
-      const data = {
-        title: 'Recipe',
-        recipe: recipeDetails,
-      };
-      res.render('recipe', data);
-    }
-  });
-});
+app.get('/recipe/:recipe_id', recipeController.getRecipeRouter);
 
 app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(500).render('serverError', { error });
