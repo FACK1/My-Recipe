@@ -1,19 +1,3 @@
-// (() => {
-//   const movebutton = document.getElementById('movebutton');
-//   const adddiv = document.getElementById('adddiv');
-//   movebutton.addEventListener('click', () =>
-//     toggleMenu(adddiv, movebutton)
-//   );
-// })();
-//
-// function toggleMenu(drawer, button) {
-//   if(drawer.style.display == 'block') {
-//           drawer.style.display = 'none';
-//      } else if(drawer.style.display == 'none') {
-//           drawer.style.display = 'block';
-//      }
-// }
-
 (() => {
   const appDrawerButton = document.querySelector('.app_drawer__button');
   const appDrawer = document.querySelector('.app_drawer');
