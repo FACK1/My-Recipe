@@ -6,7 +6,7 @@ An App Allow user to see all recipes and can create his own recipe.
  
 > See all recipes
 
-> See all recipes
+> See one recipe
 
 > Create My own recipe
 
